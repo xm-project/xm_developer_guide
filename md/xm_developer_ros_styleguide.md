@@ -8,7 +8,7 @@
 
 ### 0.2 背景
 
-Team-Xmbot-Service-Robot（晓萌家庭服务机器人团队）作为开源项目，需要团队队员贡献代码，但是如果队员之间所使用的 ROS 风格不一致，便会给团队其他模块负责人造成不小的困扰。我们认为整洁、一致的 ROS 开发风格会使整个项目更加可管理和维护。因此，我们应当使用统一的 ROS 开发风格以使得每个功能包不仅能够在现在发挥作用，而且在将来的若干年之后其依旧能够存在、可以被复用、或者是能够被未来的新队员改进。
+Team-Xmbot-Service-Robot（晓萌家庭服务机器人团队）作为开源项目，需要团队队员贡献代码，但是如果队员之间所使用的 ROS 开发风格不一致，便会给团队其他模块负责人造成不小的困扰。我们认为整洁、一致的 ROS 开发风格会使整个项目更加可管理和维护。因此，我们应当使用统一的 ROS 开发风格以使得每个功能包不仅能够在现在发挥作用，而且在将来的若干年之后其依旧能够存在、可以被复用、或者是能够被未来的新队员改进。
 
 ## 1. ROS 命名指南
 
@@ -29,7 +29,7 @@ Team-Xmbot-Service-Robot（晓萌家庭服务机器人团队）作为开源项�
 - 仿真项目请修改根前缀为 **xm_sim_**，其他规则与上面一样。
 - 包的名字应该足够的详细。比如：一个有关机械臂的运动规划包，那么 **xm_arm_motion_planning** 要比 **xm_arm_planning** 好一些。
 - 如果包的内容是基于其他第三方包的话，请在名字中进行指定。比如：一个基于 Moveit 的机械臂逆解算插件，就可以命名为 **xm_arm_moveit_ik_plugin**。
-- 元包（Metapackages）的命名比较特殊。因为元包包含了若干个子包，所以在给元包命名的时候，取一个能概括所有子包含义的名字是必要的。
+- 元包（Metapackages）的命名比较特殊。因为元包包含了若干个子包，所以在给元包命名的时候，取一个能概括所有子包含义的名字是很有必要的。
 - 其他的请参照 [ROS Hector 团队](https://github.com/tu-darmstadt-ros-pkg)代码仓库中包的命名规范。
 
 ### 1.2 Messages
@@ -38,13 +38,13 @@ Team-Xmbot-Service-Robot（晓萌家庭服务机器人团队）作为开源项�
 > 
 > 所有 `.msg`、`.srv`、`.action` 文件命名使用组内特定的规则。
 
-- 所有 `.msg`、`.srv`、`.action` 文件命名规则为：首先添加 **xm_** 前缀，之后添加每个文件具体的功能描述，描述部分必须使用驼峰命名法。例如：**xm_GripperCommand.action**。
+- 所有 `.msg`、`.srv`、`.action` 文件命名规则为：首先添加 **xm_** 前缀，之后添加每个文件具体的功能描述。描述部分必须使用驼峰命名法。例如：**xm_GripperCommand.action**。
 
 ### 1.3 Lanuch / Config / Xacro 
  
 > **Tip**
 > 
-> 所有机器人启动、配置、描述文件命名全部小写，并且描述的尽可能**清楚**。
+> 所有机器人启动、配置、描述文件命名全部小写，并且描述的尽可能清楚。
 
 ### 1.4 Nodes
 
@@ -69,9 +69,10 @@ $ rosrun xm_arm_teleop xm_arm_teleop_joint_position_keyboard
 > 命名小写、具有描述性、且添加适合的前缀来明确名字的作用范围。
 
 topic、service 和 action 的名字是节点服务端、客户端之间通信的桥梁。它们存在于一个分层的命名空间中，客户端便可以提供机制在运行时来重映射它们的名字。因此，它们相较于包的命名更加灵活。
+
 - topic、service 和 action 的名字遵循 C++ 变量命名指南：小写、下划线。
 - 命名应该足够的具有描述性。并且最好添加相应的前缀来指明 topic、service、action 的作用范围。比如：假设机械臂关节节点要通过 topic 发布关节状态数据，那命名成 **/joint_states** 要比 **/states** 好。**/xm_arm/joint_states** 又要比 **/joint_states** 好。
-- 如果某些程序发布的 topic、service、action 名字没有使用前缀，请在 launch 文件中使用 `<remap>`来重映射。比如：节点 robot_state_publisher 默认订阅的 Topic 是 **/joint_states**，使用重映射可以使其订阅 **/xm_arm/joint_states** 上的数据。
+- 如果某些程序发布的 topic、service、action 名字没有使用前缀，请在 launch 文件中使用 `<remap>`来重映射。比如：节点 robot_state_publisher 默认订阅的 topic 是 **/joint_states**，使用重映射可以使其订阅 **/xm_arm/joint_states** 上的数据。
 
 ## 2. ROS 格式指南
 
@@ -161,7 +162,7 @@ find_package(catkin REQUIRED)
 catkin_metapackage()
 ```
 
-以下是个完整的例子：
+以下是完整的例子：
 
 ``` cmake
 cmake_minimum_required(VERSION 2.8.3)
@@ -263,7 +264,7 @@ launch 文件作为 roslaunch 命令的输入，可以启动多个 ROS 节点并
 
 > **Tip**
 > 
-> 使用基于 BSD 的项目组软件开发许可证。
+> 使用基于 BSD 的项目组软件开发许可证协议。
 
 因为，ROS 开发使用的是 BSD 软件开发许可证协议。所以我们项目组在发布代码和软件包的时候，也要使用 BSD 许可证协议。以下简介格式指南。
 
