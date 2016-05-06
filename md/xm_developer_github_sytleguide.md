@@ -33,8 +33,9 @@
 > 仓库中应该包括 README.md、.gitignore 和 LICENSE 等文件。
 
 在创建本地 ROS 包仓库的时候，请在仓库中包含以下所需文件：
-- README.md：用来描述 ROS 包的功能、安装和使用方法等。编辑和修改次文件请使用 Markdown 语法。README.md 文件的内容最少应该有以下几点组成：包名、简介、功能、安装（可选）、使用。如果能有图片或架构图就更好了。具体例子请参考 [xm_arm_workspace](https://github.com/myyerrol/xm_arm_workspace)。
-- .gitignore：添加倒这个名单中的文件，将不会被 Git 版本管理软件所管理。
+
+- README.md：用来描述 ROS 包的功能、安装和使用方法等。编辑和修改此文件请使用 Markdown 语法。README.md 文件的内容最少应该由以下几点组成：包名、简介、功能、安装（可选）、使用。如果能有图片或架构图就更好了。具体例子请参考 [xm_arm_workspace](https://github.com/myyerrol/xm_arm_workspace)。
+- .gitignore：添加到这个名单中的文件，将不会被 Git 版本管理软件所管理。
 - LICENSE：用来描述 ROS 包发行所使用的软件开发协议。具体内容已经在 《ROS 风格指南》中进行了详细的介绍。
 
 ### 1.2 提交
@@ -61,7 +62,7 @@ git commit -m "add xm_arm_workspace package"
 
 分支是 Git 最为强大的地方，它是实现经典的 `Fork-Pull-Push` 开发模式的基础。具体如何创建、合并、推送、删除分支，请参考上面的学习资源。这里主要讨论代码版本的管理问题。
 
-- 2 分支版本管理模式是目前我们团队 GitHub 仓库代码的管理模式。它的原理比较简单：每次都将修改提交到默认的 master 分支上。换句话说，就是 master 分支既作为最新的开发分支，又作为稳定分支。当 master 分支上的代码被修改的足够多时，就可以创建一个新的分支来保留当前 master 分支的所有状态。以后 master 分支会继续不断地前进，而保留分支则保存了某些历史节点的代码修改。简单来说，保留分支是 master 分支在不同开发时间点的备份，它并不会被修改或更新。保留分支的命名格式为：年-月-<ROS 版本>-devel，举个例子：15.10-indigo-devel。以下为 2 分支模式图：
+- 2 分支版本管理模式是目前我们团队 GitHub 仓库代码的管理模式。它的原理比较简单：每次都将修改提交到默认的 master 分支上。换句话说，就是 master 分支既作为最新的开发分支，又作为稳定分支。当 master 分支上的代码被修改的足够多时，就可以创建一个新的分支来保留当前 master 分支的所有状态。以后 master 分支会继续不断地前进，而保留分支则保存了某些历史节点的代码修改。简单来说，保留分支是 master 分支在不同开发时间点的备份，它并不会被修改或更新。保留分支的命名格式为：年-月-ROS 版本-devel，举个例子：15.10-indigo-devel。以下为 2 分支模式图：
 
 ![github_branch_2 | center](../.images/github_branch_2.jpg)
 
@@ -106,8 +107,9 @@ git commit -m "add xm_arm_workspace package"
 > 拥有者（Owners）的权限非常大，数量要被严格限制。
 
 组织角色有两种。一个是拥有者（Owners），另一个是成员（Members）。
+
 - 拥有者（Owners）：拥有组织管理的所有权限。因为其权限过于强大，所以这个角色数量必须被限定在很少的范围内。这里明确规定：**每届软件组里只允许有 1 个队员可以成为组织的拥有者**。
-- 成员（Members）：组织的默认角色。拥有创建新团队（Team）、上传新代码、读写已有代码、可以在团队（Team）内部或之间相互交流和拥有团队维护者（Team Maintainer）头衔的权力。
+- 成员（Members）：组织的默认角色。拥有创建新团队（Team）、上传新代码、读写已有代码、可以在团队（Team）内部或之间相互交流和拥有团队维护者（Team Maintainer）头衔的权限。
 
 其他具体请看 [GitHub 组织角色权限](https://help.github.com/articles/permission-levels-for-an-organization/) 介绍。
 
