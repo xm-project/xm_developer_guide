@@ -64,11 +64,11 @@ git commit -m "add xm_arm_workspace package"
 
 - 2 分支版本管理模式是目前我们团队 GitHub 仓库代码的管理模式。它的原理比较简单：每次都将修改提交到默认的 master 分支上。换句话说，就是 master 分支既作为最新的开发分支，又作为稳定分支。当 master 分支上的代码被修改的足够多时，就可以创建一个新的分支来保留当前 master 分支的所有状态。以后 master 分支会继续不断地前进，而保留分支则保存了某些历史节点的代码修改。简单来说，保留分支是 master 分支在不同开发时间点的备份，它并不会被修改或更新。保留分支的命名格式为：年-月-ROS 版本-devel，举个例子：15.10-indigo-devel。以下为 2 分支模式图：
 
-![github_branch_2 | center](../.images/github_branch_2.svg)
+![github_branch_2 | center](../.images/github_branch_2.png)
 
 - 3 分支版本管理模式是在 2 分支的基础上的一个改进。即从原先 master 分支分出一个开发分支，master 分支只作为当前稳定分支而存在，而所有最新的代码修改都是在开发分支上完成的。只有当开发分支上的新功能趋于稳定且没有 Bug 的时候，才可以将开发分支合并到 master 稳定分支上，这样就能保证存在于最新代码中的问题不会影响到原先的老代码。保留分支的使用则和上面介绍的相同。以下为 3 分支模式图：
 
-![github_branch_3 | center](../.images/github_branch_3.svg)
+![github_branch_3 | center](../.images/github_branch_3.png)
 
 结论：推荐使用 3 分支的 Git 开发模式。如果为了简化 GitHub 仓库的管理，使用 2 分支的模式也是可以的。
 
